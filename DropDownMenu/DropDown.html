@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/DropDown.css"/>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="container">
+        <div onclick="showHideItems('dropdown-items')" class="dropdown-btn">
+          <div class="text">Social Media</div>
+          <div class="icon-btn">
+            <i class="material-icons icon-style">arrow_drop_down</i>
+          </div>
+        </div>
+        <div class="dropdown-items">
+          <div class="slider"></div>
+          <ul>
+            <li>
+              <a
+                onclick="clickItem(0)"
+                onmouseover="slideBg(0);"
+                onmouseout="sliderHide()"
+                href="#"
+                >YouTube</a
+              >
+            </li>
+            <li>
+              <a
+                onclick="clickItem(1)"
+                onmouseover="slideBg(1);"
+                onmouseout="sliderHide()"
+                href="#"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                onclick="clickItem(2)"
+                onmouseover="slideBg(2);"
+                onmouseout="sliderHide()"
+                href="#"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                onclick="clickItem(3)"
+                onmouseover="slideBg(3);"
+                onmouseout="sliderHide()"
+                href="#"
+                >Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                onclick="clickItem(4)"
+                onmouseover="slideBg(4);"
+                onmouseout="sliderHide()"
+                href="#"
+                >Facebook</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showHideItems(clsName) {
+        var itemsHolder = document.getElementsByClassName(clsName)[0];
+        var iconButton = document.getElementsByClassName("icon-style")[0];
+
+        var itemStyle = itemsHolder.style;
+        itemStyle.display == "block"
+          ? (iconButton.innerHTML = "arrow_drop_down")
+          : (iconButton.innerHTML = "arrow_drop_up");
+        itemStyle.display == "block"
+          ? (itemStyle.display = "none")
+          : (itemStyle.display = "block");
+        itemStyle.top = "0";
+      }
+      function slideBg(index) {
+        var slider = document.getElementsByClassName("slider")[0];
+
+        var itemsHolder = document.getElementsByClassName("dropdown-items")[0];
+
+        var ul = itemsHolder.children[1];
+
+        var listItems = ul.children;
+
+        var clicked = listItems[index].firstElementChild;
+
+        var distance = clicked.offsetTop;
+        slider.style.opacity = "1";
+        slider.style.top = distance + "px";
+        slider.style.transition = "0.5s";
+      }
+      function clickItem(index) {
+        var text = document.getElementsByClassName("text")[0];
+        var itemsHolder = document.getElementsByClassName("dropdown-items")[0];
+
+        var ul = itemsHolder.children[1];
+
+        var listItems = ul.children;
+
+        var clicked = listItems[index].firstElementChild;
+        text.innerHTML = clicked.innerHTML;
+      }
+      function sliderHide() {
+        var slider = document.getElementsByClassName("slider")[0];
+
+        slider.style.opacity = "0";
+      }
+    </script>
+  </body>
+</html>
